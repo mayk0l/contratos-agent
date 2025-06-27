@@ -29,7 +29,8 @@ export default function ChatPage() {
     setMessages(updatedMessages);
 
     try {
-      const res = await fetch("http://localhost:3000/chat", {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+      const res = await fetch(`${backendUrl}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
