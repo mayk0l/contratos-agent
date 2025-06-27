@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("API de contratos funcionando.");
+});
+
+
 app.post('/generar-contrato', async (req, res) => {
     const { tipo, datos } = req.body;
 
