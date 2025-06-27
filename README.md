@@ -49,4 +49,3 @@ contratos-agent/
 
 ## Licencia
 
-[MIT](LICENSE)
