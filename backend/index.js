@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // Configuración CORS más explícita
 app.use(cors({
   origin: [
-    'https://contratos-agent-backend.vercel.app',
+    'https://contratos-agent.vercel.app',
     'http://localhost:5173',
     'http://localhost:3000'
   ],
