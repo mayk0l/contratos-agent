@@ -8,7 +8,19 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors());
+
+// Configuración CORS más explícita
+app.use(cors({
+  origin: [
+    'https://contratos-agent-backend.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
