@@ -46,16 +46,16 @@ app.post('/chat', async (req, res) => {
         Responde como abogado profesional, nunca menciones que eres IA.`.trim();
 
     try {
-        console.log("🚀 Enviando petición a OpenRouter...");
+        console.log("🚀 Enviando petición a Groq...");
         
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+                "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                model: "mistralai/mistral-small-3.2-24b-instruct:free",
+                model: "llama3-8b-8192",
                 messages: [
                     { role: "system", content: systemPrompt },
                     ...mensajes, // [{ role: "user", content: "..." }, { role: "assistant", content: "..." }]
@@ -63,7 +63,7 @@ app.post('/chat', async (req, res) => {
             })
         });
 
-        console.log(`📊 Status OpenRouter: ${response.status}`);
+        console.log(`📊 Status Groq: ${response.status}`);
         
         // Verificar rate limits
         const remaining = response.headers.get('x-ratelimit-requests-remaining');
